@@ -16,6 +16,8 @@ describe('User', () => {
       email: 'test@test.com',
       password: 'secret123',
     });
-    await testUser.save();
+    let savedUser = await testUser.save();
+    let allUsers = await User.find();
+    expect(allUsers[0].id).toEqual(savedUser.id);
   });
 });
